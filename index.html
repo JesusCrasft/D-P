@@ -7,17 +7,28 @@
 		#canvas {
 			border-color: black;
 			border: solid;
-			background-image: url(img/nubes.jpg);
+			background-image: url(img/fondo.jpeg);
+		}
+		#boton {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translateX(-50%) translateY(-50%);
 		}
 	</style>
 </head>
 <body>
 	<center>
 		<div id="div">
-			<canvas height="420" width="700" id="canvas">
+			<canvas height="420" width="600" id="canvas">
 				
 			</canvas>
-		</div>
+			<div id="modal">
+				<button id="boton" onclick="iniciar();">
+					<img src="img/play.png">
+				</button>
+			</div>
 	</center>
+	<script type="text/javascript" src="index.js"></script>
 </body>
 </html>
