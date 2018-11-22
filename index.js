@@ -13,19 +13,19 @@ var bucle;
 var x;
 var y;
 var patox = {
-	x : 800,
+	x : 1200,
 	y : 20,
 	velocidad : 5,
 	img : document.createElement('img')	
 };
 var patoy = {
-	x : 700,
+	x : 1100,
 	y : 20,
 	velocidad : 5,
 	img : document.createElement('img')	
 };
 var patoz = {
-	x : 600,
+	x : 1000,
 	y : 20,
 	velocidad : 5,
 	img : document.createElement('img')	
@@ -63,9 +63,9 @@ class Informacion {
 	dibujar() {
 		ctx.fillStyle = 'black';
 		ctx.font = "18px Arial";
-		ctx.fillText("Puntos: "+puntos, 200, 15);
+		ctx.fillText("Puntos: "+puntos, 400, 15);
 		ctx.fillText("Jugador: "+ju, 20, 15);
-		ctx.fillText("Patos: "+patos, 300, 15);
+		ctx.fillText("Patos: "+patos, 700, 15);
 	}
 }
 
@@ -139,31 +139,71 @@ canvas.addEventListener('mousemove', function(evt) {
 }, false);
 
 function choquex() {
-	if (x > patox.x && x < patox.x+5 && y < 20) {
-		console.log("as");
+	if (x > patox.x && y < 25 && y > 1) {
 		puntos = puntos+1;
+		patos = patos+1;
+		patox.x = 1200;
+		x = 500;
+		y = 210;
 	}
 }
 
 function choquey() {
-	if (x > patoy.x && x < patoy.x+5 && y < 20) {
-		console.log("as");
+	if (x > patoy.x && y < 25 && y > 1) {
+		puntos = puntos+1;
+		patos = patos+1;
+		patoy.x = 1100;
+		x = 500;
+		y = 210;		
 	}
 }
 
 function choquez() {
-	if (x > patoz.x && x < patoz.x+5 && y < 20) {
-		console.log("as");
+	if (x > patoz.x && y < 25 && y > 1) {
+		puntos = puntos+1;
+		patos = patos+1;
+		patoz.x = 1000;
+		x = 500;
+		y = 210;		
 	}
 }
 
+function choquea() {
+	if (x < patoa.x && y > 170 && y < 210) {
+		puntos = puntos+1;
+		patos = patos+1;
+		patoa.x = -300;
+		x = 500;
+		y = 210;		
+	}
+}
+
+function choqueb() {
+	if (x < patob.x && y > 170 && y < 210) {
+		puntos = puntos+1;
+		patos = patos+1;
+		patob.x = -200;
+		x = 500;
+		y = 210;
+	}	
+}
+
+function choquec() {
+	if (x < patoc.x && y > 170 && y < 210) {
+		puntos = puntos+1;
+		patos = patos+1;
+		patoc.x = -100;
+		x = 500;
+		y = 210;		
+	}	
+}
 
 function moverpx() {
 	if (patox.x > 0) {	
 		patox.x -= patox.velocidad;
 	}
 	if (patox.x <= 0) {
-		patox.x = 800;
+		patox.x = 1200;
 		patox.velocidad = patox.velocidad+1;
 	}	
 	if (patox.velocidad > 10) {
@@ -176,7 +216,7 @@ function moverpy() {
 		patoy.x -= patoy.velocidad;
 	}
 	if (patoy.x <= 0) {
-		patoy.x = 700;
+		patoy.x = 1100;
 		patoy.velocidad = patoy.velocidad+1;
 	}	
 	if (patoy.velocidad > 10) {
@@ -189,7 +229,7 @@ function moverpz() {
 		patoz.x -= patoz.velocidad;
 	}
 	if (patoz.x <= 0) {
-		patoz.x = 600;
+		patoz.x = 1000;
 		patoz.velocidad = patoz.velocidad+1;
 	}	
 	if (patoz.velocidad > 10) {
@@ -197,10 +237,10 @@ function moverpz() {
 	}
 }
 function moverpa() {
-	if (patoa.x < 600) {
+	if (patoa.x < 1000) {
 		patoa.x += patoa.velocidad;
 	}
-	if (patoa.x > 599) {
+	if (patoa.x > 999) {
 		patoa.x = -300;
 		patoa.velocidad = patoa.velocidad+1;
 	}
@@ -210,10 +250,10 @@ function moverpa() {
 }
 
 function moverpb() {
-	if (patob.x < 600) {
+	if (patob.x < 1000) {
 		patob.x += patob.velocidad;
 	}
-	if (patob.x > 599) {
+	if (patob.x > 999) {
 		patob.x = -200;
 		patob.velocidad = patob.velocidad+1;
 	}
@@ -223,10 +263,10 @@ function moverpb() {
 }
 
 function moverpc() {
-	if (patoc.x < 600) {
+	if (patoc.x < 1000) {
 		patoc.x += patoc.velocidad;
 	}
-	if (patoc.x > 599) {
+	if (patoc.x > 999) {
 		patoc.x = -100;
 		patoc.velocidad = patoc.velocidad+1;
 	}
@@ -269,6 +309,11 @@ function actualizar() {
 
 function colisiones() {
 	choquex();
+	choquey();
+	choquez();
+	choquea();
+	choqueb();
+	choquec();
 }
 
 function dibujar() {
@@ -292,5 +337,6 @@ function frame() {
 function iniciar() {
 	var modal = document.getElementById('modal');
 	modal.style.display = 'none';
-	frame()
+	mostrarM(ju1);
+	mostrarM(inst); 	
 }
