@@ -6,7 +6,7 @@ var areaw = canvas.width;
 var puntos = 0;
 var patos = 0;
 var ju1 = crearTMIP("Coloque el nombre de Jugador");
-var inst = crearTM("Disparele a tanto patos como puedas");
+var inst = crearTM("Disparele a tanto patos como puedas.No dejes que se escapen");
 var ju;
 var disparo;
 var bucle;
@@ -15,36 +15,42 @@ var y;
 var patox = {
 	x : 1200,
 	y : 20,
+	click : false,
 	velocidad : 5,
 	img : document.createElement('img')	
 };
 var patoy = {
 	x : 1100,
 	y : 20,
+	click : false,
 	velocidad : 5,
 	img : document.createElement('img')	
 };
 var patoz = {
 	x : 1000,
 	y : 20,
+	click : false,
 	velocidad : 5,
 	img : document.createElement('img')	
 };
 var patoa = {
 	x : -300,
 	y : 200,
+	click : false,
 	velocidad : 5,
 	img : document.createElement('img')	
 };
 var patob = {
 	x : -200,
 	y : 200,
+	click : false,
 	velocidad : 5,
 	img : document.createElement('img')	
 };
 var patoc = {
 	x : -100,
 	y : 200,
+	click : false,
 	velocidad : 5,
 	img : document.createElement('img')	
 };
@@ -138,61 +144,70 @@ canvas.addEventListener('mousemove', function(evt) {
    y = mousePos.y;
 }, false);
 
+canvas.addEventListener('click', function () {
+	patox.click = true;
+	patoy.click = true;
+	patoz.click = true;
+	patoa.click = true;
+	patob.click = true;
+	patoc.click = true;
+});
+
 function choquex() {
-	if (x > patox.x && y < 25 && y > 1) {
+	if (x > patox.x && y < 25 && y > 1 && patox.click == true) {
 		puntos = puntos+1;
-		patos = patos+1;
 		patox.x = 1200;
+		patox.click = false;
 		x = 500;
 		y = 210;
 	}
 }
 
 function choquey() {
-	if (x > patoy.x && y < 25 && y > 1) {
+	if (x > patoy.x && y < 25 && y > 1 && patoy.click == true) {
 		puntos = puntos+1;
-		patos = patos+1;
 		patoy.x = 1100;
+		patoy.click = false;
 		x = 500;
 		y = 210;		
 	}
 }
 
 function choquez() {
-	if (x > patoz.x && y < 25 && y > 1) {
+	if (x > patoz.x && y < 25 && y > 1 && patoz.click == true) {
 		puntos = puntos+1;
-		patos = patos+1;
 		patoz.x = 1000;
+		patoz.click = false;
 		x = 500;
 		y = 210;		
 	}
 }
 
 function choquea() {
-	if (x < patoa.x && y > 170 && y < 210) {
+	if (x < patoa.x && y > 170 && y < 210 && patoa.click == true) {
 		puntos = puntos+1;
-		patos = patos+1;
 		patoa.x = -300;
+		patoa.click = false;
 		x = 500;
 		y = 210;		
 	}
 }
 
 function choqueb() {
-	if (x < patob.x && y > 170 && y < 210) {
+	if (x < patob.x && y > 170 && y < 210 && patoc.click == true) {
 		puntos = puntos+1;
-		patos = patos+1;
 		patob.x = -200;
+		patob.click = false;
 		x = 500;
 		y = 210;
 	}	
 }
 
 function choquec() {
-	if (x < patoc.x && y > 170 && y < 210) {
+	if (x < patoc.x && y > 170 && y < 210 && patoc.click == true) {
 		puntos = puntos+1;
-		patos = patos+1;
 		patoc.x = -100;
+		patox.click = false;
 		x = 500;
 		y = 210;		
 	}	
@@ -204,6 +219,8 @@ function moverpx() {
 	}
 	if (patox.x <= 0) {
 		patox.x = 1200;
+		patox.click = false;
+		patos = patos+1;
 		patox.velocidad = patox.velocidad+1;
 	}	
 	if (patox.velocidad > 10) {
@@ -217,6 +234,8 @@ function moverpy() {
 	}
 	if (patoy.x <= 0) {
 		patoy.x = 1100;
+		patoy.click = false;
+		patos = patos+1;
 		patoy.velocidad = patoy.velocidad+1;
 	}	
 	if (patoy.velocidad > 10) {
@@ -230,6 +249,8 @@ function moverpz() {
 	}
 	if (patoz.x <= 0) {
 		patoz.x = 1000;
+		patoz.click = false;
+		patos = patos+1;
 		patoz.velocidad = patoz.velocidad+1;
 	}	
 	if (patoz.velocidad > 10) {
@@ -242,6 +263,8 @@ function moverpa() {
 	}
 	if (patoa.x > 999) {
 		patoa.x = -300;
+		patoa.click = false;
+		patos = patos+1;
 		patoa.velocidad = patoa.velocidad+1;
 	}
 	if (patoa.velocidad > 12) {
@@ -255,6 +278,8 @@ function moverpb() {
 	}
 	if (patob.x > 999) {
 		patob.x = -200;
+		patob.click = false;
+		patos = patos+1;
 		patob.velocidad = patob.velocidad+1;
 	}
 	if (patob.velocidad > 12) {
@@ -268,6 +293,8 @@ function moverpc() {
 	}
 	if (patoc.x > 999) {
 		patoc.x = -100;
+		patoc.click = false;
+		patos = patos+1;
 		patoc.velocidad = patoc.velocidad+1;
 	}
 	if (patoc.velocidad > 12) {
@@ -304,7 +331,7 @@ function actualizar() {
 	moverpz();
 	moverpa();
 	moverpb();
-	moverpc();	
+	moverpc();
 }
 
 function colisiones() {
