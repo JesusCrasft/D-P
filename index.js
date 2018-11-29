@@ -15,42 +15,36 @@ var y;
 var patox = {
 	x : 1200,
 	y : 20,
-	click : false,
 	velocidad : 5,
 	img : document.createElement('img')	
 };
 var patoy = {
 	x : 1100,
 	y : 20,
-	click : false,
 	velocidad : 5,
 	img : document.createElement('img')	
 };
 var patoz = {
 	x : 1000,
 	y : 20,
-	click : false,
 	velocidad : 5,
 	img : document.createElement('img')	
 };
 var patoa = {
 	x : -300,
 	y : 200,
-	click : false,
 	velocidad : 5,
 	img : document.createElement('img')	
 };
 var patob = {
 	x : -200,
 	y : 200,
-	click : false,
 	velocidad : 5,
 	img : document.createElement('img')	
 };
 var patoc = {
 	x : -100,
 	y : 200,
-	click : false,
 	velocidad : 5,
 	img : document.createElement('img')	
 };
@@ -144,72 +138,47 @@ canvas.addEventListener('mousemove', function(evt) {
    y = mousePos.y;
 }, false);
 
-canvas.addEventListener('click', function () {
-	patox.click = true;
-	patoy.click = true;
-	patoz.click = true;
-	patoa.click = true;
-	patob.click = true;
-	patoc.click = true;
-});
+
 
 function choquex() {
-	if (x > patox.x && y < 25 && y > 1 && patox.click == true) {
+	if (x > patox.x && patox.x > x-100 && y < 25 && y > 1) {
 		puntos = puntos+1;
 		patox.x = 1200;
-		patox.click = false;
-		x = 500;
-		y = 210;
 	}
 }
 
 function choquey() {
-	if (x > patoy.x && y < 25 && y > 1 && patoy.click == true) {
+	if (x > patoy.x && patoy.x > x-100 && y < 25 && y > 1) {
 		puntos = puntos+1;
-		patoy.x = 1100;
-		patoy.click = false;
-		x = 500;
-		y = 210;		
+		patoy.x = 1100;	
 	}
 }
 
 function choquez() {
-	if (x > patoz.x && y < 25 && y > 1 && patoz.click == true) {
+	if (x > patoz.x && patoz.x > x-100 && y < 25 && y > 1) {
 		puntos = puntos+1;
-		patoz.x = 1000;
-		patoz.click = false;
-		x = 500;
-		y = 210;		
+		patoz.x = 1000;		
 	}
 }
 
 function choquea() {
-	if (x < patoa.x && y > 170 && y < 210 && patoa.click == true) {
+	if (x < patoa.x && patoa.x < x+50 && y > 170 && y < 210) {
 		puntos = puntos+1;
 		patoa.x = -300;
-		patoa.click = false;
-		x = 500;
-		y = 210;		
 	}
 }
 
 function choqueb() {
-	if (x < patob.x && y > 170 && y < 210 && patoc.click == true) {
+	if (x < patob.x && patob.x < x+50 && y > 170 && y < 210) {
 		puntos = puntos+1;
 		patob.x = -200;
-		patob.click = false;
-		x = 500;
-		y = 210;
 	}	
 }
 
 function choquec() {
-	if (x < patoc.x && y > 170 && y < 210 && patoc.click == true) {
+	if (x < patoc.x && patoc.x < x+50 && y > 170 && y < 210) {
 		puntos = puntos+1;
-		patoc.x = -100;
-		patox.click = false;
-		x = 500;
-		y = 210;		
+		patoc.x = -100;	
 	}	
 }
 
