@@ -5,13 +5,13 @@ var areah = canvas.height;
 var areaw = canvas.width;
 var puntos = 0;
 var patos = 0;
-var puntosM = crearTM(puntos);
 var perdiste = crearTM("Game Over");
 var ju1 = crearTMIP("Coloque el nombre de Jugador");
 var inst = crearTM("Disparele a tanto patos como puedas.No dejes que se escapen");
 var ju;
 var disparo;
 var bucle;
+var boom = document.createElement("audio");
 var municiones = 6;
 var premu = true;
 var x;
@@ -19,37 +19,37 @@ var y;
 var patox = {
 	x : 1200,
 	y : 20,
-	velocidad : 5,
+	velocidad : numeroA(3,8),
 	img : document.createElement('img')	
 };
 var patoy = {
 	x : 1100,
 	y : 20,
-	velocidad : 5,
+	velocidad : numeroA(3,8),
 	img : document.createElement('img')	
 };
 var patoz = {
 	x : 1000,
 	y : 20,
-	velocidad : 5,
+	velocidad : numeroA(3,8),
 	img : document.createElement('img')	
 };
 var patoa = {
 	x : -300,
 	y : 200,
-	velocidad : 5,
+	velocidad : numeroA(3,8),
 	img : document.createElement('img')	
 };
 var patob = {
 	x : -200,
 	y : 200,
-	velocidad : 5,
+	velocidad : numeroA(3,8),
 	img : document.createElement('img')	
 };
 var patoc = {
 	x : -100,
 	y : 200,
-	velocidad : 5,
+	velocidad : numeroA(3,8),
 	img : document.createElement('img')	
 };
 patox.img.src = "img/otap.png";
@@ -58,6 +58,7 @@ patoz.img.src = "img/otap.png";
 patoa.img.src = "img/pato.jpeg";
 patob.img.src = "img/pato.jpeg";
 patoc.img.src = "img/pato.jpeg";
+boom.src = 'img/prueba.mp3';
 
 //Clases
 class Informacion {
@@ -76,6 +77,11 @@ class Informacion {
 
 var info = new Informacion();
 //Funciones
+function playS(s) {
+	s.currentTime = 0;
+	s.play();
+}
+
 function crearTM(msj) {
 	var f = document.createElement('div');
 	var m = document.createElement('div');
@@ -137,6 +143,23 @@ function getMousePos(canvas, evt) {
   		y: evt.clientY
    };
 }
+
+function numeroA(num1, num2) {
+	return Math.round((Math.random() * num2) + num1);
+}
+
+function signoA() {
+	var num = numeroA(0,1);
+	switch(num) {
+		case 0:
+			return -1;
+			break;
+		case 1:
+			return 1;
+			break;
+	}
+}
+
 canvas.addEventListener('mousemove', function(evt) {
    var mousePos = getMousePos(canvas, evt);
    x = mousePos.x;
@@ -146,15 +169,24 @@ canvas.addEventListener('mousemove', function(evt) {
 function Municiones() {
 	if (municiones <= 0) {
 		premu = false;
-		setInterval(function () {
+		a = setInterval(function () {
 			municiones = 6;
 			premu = true;
 		},3000);
+
+		b = setInterval(function () {
+			clearInterval(a);
+		},4000)
+
+		c = setInterval(function () {
+			clearInterval(b);
+		},5000);
 	}
 }
 
 function Fin() {
 	if (patos >= 30) {
+		var puntosM = crearTM("Tus puntos son:" +puntos);
 		patox.velocidad = 0;
 		patoy.velocidad = 0;
 		patoz.velocidad = 0;
@@ -167,8 +199,8 @@ function Fin() {
 		patoa.x = -100;
 		patob.x = -200;
 		patoc.x = -300;		
-		mostrarM(puntosM);
 		mostrarM(perdiste);
+		mostrarM(puntosM);
 		setInterval(function () {
 			document.location.reload();
 		},5000);
@@ -181,6 +213,7 @@ function choquex() {
 		patox.x = 1200;
 		municiones = municiones-1;
 		Municiones();
+		playS(boom);
 	}
 }
 
@@ -190,6 +223,7 @@ function choquey() {
 		patoy.x = 1100;	
 		municiones = municiones-1;
 		Municiones();		
+		playS(boom);
 	}
 }
 
@@ -198,7 +232,8 @@ function choquez() {
 		puntos = puntos+1;
 		patoz.x = 1000;	
 		municiones = municiones-1;
-		Municiones();			
+		Municiones();	
+		playS(boom);		
 	}
 }
 
@@ -207,7 +242,8 @@ function choquea() {
 		puntos = puntos+1;
 		patoa.x = -300;
 		municiones = municiones-1;
-		Municiones();		
+		Municiones();	
+		playS(boom);	
 	}
 }
 
@@ -216,7 +252,8 @@ function choqueb() {
 		puntos = puntos+1;
 		patob.x = -200;
 		municiones = municiones-1;
-		Municiones();		
+		Municiones();	
+		playS(boom);	
 	}	
 }
 
@@ -225,7 +262,8 @@ function choquec() {
 		puntos = puntos+1;
 		patoc.x = -100;	
 		municiones = municiones-1;
-		Municiones();		
+		Municiones();
+		playS(boom);			
 	}	
 }
 
