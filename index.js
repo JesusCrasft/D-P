@@ -12,8 +12,6 @@ var ju;
 var disparo;
 var bucle;
 var boom = document.createElement("audio");
-var municiones = 6;
-var premu = true;
 var x;
 var y;
 var patox = {
@@ -71,7 +69,6 @@ class Informacion {
 		ctx.fillText("Puntos: "+puntos, 400, 15);
 		ctx.fillText("Jugador: "+ju, 20, 15);
 		ctx.fillText("Patos: "+patos, 700, 15);
-		ctx.fillText("Disparos: "+municiones, 900, 15);
 	}
 }
 
@@ -166,24 +163,6 @@ canvas.addEventListener('mousemove', function(evt) {
    y = mousePos.y;
 }, false);
 
-function Municiones() {
-	if (municiones <= 0) {
-		premu = false;
-		a = setInterval(function () {
-			municiones = 6;
-			premu = true;
-		},3000);
-
-		b = setInterval(function () {
-			clearInterval(a);
-		},4000)
-
-		c = setInterval(function () {
-			clearInterval(b);
-		},5000);
-	}
-}
-
 function Fin() {
 	if (patos >= 30) {
 		var puntosM = crearTM("Tus puntos son:" +puntos);
@@ -208,63 +187,75 @@ function Fin() {
 }
 
 function choquex() {
-	if (x > patox.x && patox.x > x-100 && y < 25 && y > 1 && premu == true) {
-		puntos = puntos+1;
-		patox.x = 1200;
-		municiones = municiones-1;
-		Municiones();
-		playS(boom);
-	}
+	canvas.addEventListener('click', function () {
+		if (x > patox.x && patox.x > x-100 && y < 25 && y > 1) {
+			puntos = puntos+1;
+			patox.x = 1200;
+			municiones = municiones-1;
+			Municiones();
+			playS(boom);
+		}
+	});		
 }
 
 function choquey() {
-	if (x > patoy.x && patoy.x > x-100 && y < 25 && y > 1 && premu == true) {
-		puntos = puntos+1;
-		patoy.x = 1100;	
-		municiones = municiones-1;
-		Municiones();		
-		playS(boom);
-	}
+	canvas.addEventListener('click', function () {
+		if (x > patoy.x && patoy.x > x-100 && y < 25 && y > 1) {
+			puntos = puntos+1;
+			patoy.x = 1100;	
+			municiones = municiones-1;
+			Municiones();		
+			playS(boom);
+		}
+	});
 }
 
 function choquez() {
-	if (x > patoz.x && patoz.x > x-100 && y < 25 && y > 1 && premu == true) {
-		puntos = puntos+1;
-		patoz.x = 1000;	
-		municiones = municiones-1;
-		Municiones();	
-		playS(boom);		
-	}
+	canvas.addEventListener('click', function () {
+		if (x > patoz.x && patoz.x > x-100 && y < 25 && y > 1) {
+			puntos = puntos+1;
+			patoz.x = 1000;	
+			municiones = municiones-1;
+			Municiones();	
+			playS(boom);		
+		}
+	});	
 }
 
 function choquea() {
-	if (x < patoa.x && patoa.x < x+50 && y > 170 && y < 210 && premu == true) {
-		puntos = puntos+1;
-		patoa.x = -300;
-		municiones = municiones-1;
-		Municiones();	
-		playS(boom);	
-	}
+	canvas.addEventListener('click', function () {
+		if (x < patoa.x && patoa.x < x+50 && y > 170 && y < 210) {
+			puntos = puntos+1;
+			patoa.x = -300;
+			municiones = municiones-1;
+			Municiones();	
+			playS(boom);	
+		}
+	});	
 }
 
 function choqueb() {
-	if (x < patob.x && patob.x < x+50 && y > 170 && y < 210 && premu == true) {
-		puntos = puntos+1;
-		patob.x = -200;
-		municiones = municiones-1;
-		Municiones();	
-		playS(boom);	
-	}	
+	canvas.addEventListener('click', function () {
+		if (x < patob.x && patob.x < x+50 && y > 170 && y < 210) {
+			puntos = puntos+1;
+			patob.x = -200;
+			municiones = municiones-1;
+			Municiones();	
+			playS(boom);	
+		}	
+	});	
 }
 
 function choquec() {
-	if (x < patoc.x && patoc.x < x+50 && y > 170 && y < 210 && premu == true) {
-		puntos = puntos+1;
-		patoc.x = -100;	
-		municiones = municiones-1;
-		Municiones();
-		playS(boom);			
-	}	
+	canvas.addEventListener('click', function () {
+		if (x < patoc.x && patoc.x < x+50 && y > 170 && y < 210) {
+			puntos = puntos+1;
+			patoc.x = -100;	
+			municiones = municiones-1;
+			Municiones();
+			playS(boom);			
+		}	
+	});	
 }
 
 function moverpx() {
