@@ -191,8 +191,6 @@ function choquex() {
 		if (x > patox.x && patox.x > x-100 && y < 25 && y > 1) {
 			puntos = puntos+1;
 			patox.x = 1200;
-			municiones = municiones-1;
-			Municiones();
 			playS(boom);
 		}
 	});		
@@ -202,9 +200,7 @@ function choquey() {
 	canvas.addEventListener('click', function () {
 		if (x > patoy.x && patoy.x > x-100 && y < 25 && y > 1) {
 			puntos = puntos+1;
-			patoy.x = 1100;	
-			municiones = municiones-1;
-			Municiones();		
+			patoy.x = 1100;		
 			playS(boom);
 		}
 	});
@@ -214,9 +210,7 @@ function choquez() {
 	canvas.addEventListener('click', function () {
 		if (x > patoz.x && patoz.x > x-100 && y < 25 && y > 1) {
 			puntos = puntos+1;
-			patoz.x = 1000;	
-			municiones = municiones-1;
-			Municiones();	
+			patoz.x = 1000;		
 			playS(boom);		
 		}
 	});	
@@ -226,9 +220,7 @@ function choquea() {
 	canvas.addEventListener('click', function () {
 		if (x < patoa.x && patoa.x < x+50 && y > 170 && y < 210) {
 			puntos = puntos+1;
-			patoa.x = -300;
-			municiones = municiones-1;
-			Municiones();	
+			patoa.x = -300;	
 			playS(boom);	
 		}
 	});	
@@ -239,8 +231,6 @@ function choqueb() {
 		if (x < patob.x && patob.x < x+50 && y > 170 && y < 210) {
 			puntos = puntos+1;
 			patob.x = -200;
-			municiones = municiones-1;
-			Municiones();	
 			playS(boom);	
 		}	
 	});	
@@ -251,8 +241,6 @@ function choquec() {
 		if (x < patoc.x && patoc.x < x+50 && y > 170 && y < 210) {
 			puntos = puntos+1;
 			patoc.x = -100;	
-			municiones = municiones-1;
-			Municiones();
 			playS(boom);			
 		}	
 	});	
@@ -312,7 +300,7 @@ function moverpa() {
 		patoa.velocidad = patoa.velocidad+1;
 		Fin();		
 	}
-	if (patoa.velocidad > 12) {
+	if (patoa.velocidad > 10) {
 		patoa.velocidad = 5;
 	}
 }
@@ -327,7 +315,7 @@ function moverpb() {
 		patob.velocidad = patob.velocidad+1;
 		Fin();		
 	}
-	if (patob.velocidad > 12) {
+	if (patob.velocidad > 10) {
 		patob.velocidad = 5;
 	}
 }
@@ -342,7 +330,7 @@ function moverpc() {
 		patoc.velocidad = patoc.velocidad+1;
 		Fin();		
 	}
-	if (patoc.velocidad > 12) {
+	if (patoc.velocidad > 10) {
 		patoc.velocidad = 5;
 	}
 }
