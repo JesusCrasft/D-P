@@ -1,41 +1,42 @@
 # D-P
-> Es una aplicacion desarrollada en Javascript,Html y CSS; Es un juego donde tienes que dispararle a los patos y no dejar que escapen.
-- Es un juego de practica que desarrolle.
-- Su nombre seria Disparale a los patos o DP.
-- Tiene unos pequeños errores que se pueden mejorar.
+> Es un juego donde tienes que dispararle a los patos y no dejar que escapen.
 
-## Instalación
+> Es un juego de practica que desarrolle.
 
-- Funciona en Linux y Window.
+> Su nombre seria Disparale a los patos o DP.
 
->Descargar el archivo zip.
+> Aun no esta terminado, lo actualizare cuando se me ocurra algun cambio o quiera probar algo de nuevo.
 
->Extraer el archivo zip.
+## Screenshots / Capturas de Pantalla
 
->Abrir la carpeta.
+## Tech-framework used / Tecnologías Usadas
+- JavaScript
+- HTML
+- CSS
 
->Buscar el html.
+## Install / Instalación
+#### OS X, Linux y Windows
 
-> Abrir el html en un navegador.
+Los unicos requisitos son tener instalado algun navegador.
 
-## Instrucciones
+*Descargar el archivo, descomprimirlo y situarse en la carpeta*
 
->Al abrir el html en un navegador te dira que se hace.
+Ejecutar el archivo .html
 
->Despues te pedira poner un nombre de jugador.
+## Tasks / Lista de Tareas
+- [x] Inicializar repositorio
+- [x] Subir mis primeros cambios a GitHub
+- [x] Completar el codigo
+- [x] Probar el el codigo
+- [x] Hacer el readme
 
->Despues comenzara el juego.
+## Contribute / Para contribuir
+1. Has un [Fork](https://github.com/JesusCrasft/D-P/fork)
+2. Crea tu propia rama (git checkout -b feature/fooBar)
+3. Sube tus cambios (git commit -am 'Add some fooBar')
+4. Actualiza tu rama (git push origin feature/fooBar)
+5. Has un "Pull Request"
 
->Tienes que evitar que los patos escapen si escapan 30 patos se termina el juego.
-
->Tienes que darle con el mouse para cazarlos.
-
-## Lenguajes
-
->Se usaron distintos lenguajes de programacion para hacer el juego.
-
->JS conocido como JavaScritp fue donde puse las funciones primordiales la funciones de moverse,choques con el mouse,etc.uen 
-
->HTML fue el lenguaje que use para hacer la vista donde esta el canvas las id.
-
->CSS fue otro lenguaje que use para darle estilos a la vista tambien para hacer una funcion necesaria en JS que fue el msg y poner el nombre del jugador,etc.
+## License / Licencia
+Jesus Angulo – @github/JesusCrasft – jesus.flores.angulo@gmail.com
+Distributed under the MIT license. See [LICENSE](LICENSE) for more information.
